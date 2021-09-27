@@ -1,14 +1,9 @@
-var post = document.getElementById("ButtonPost")
-var clear = document.getElementById("ButtonClear")
-var mark = document.getElementById("ButtonMark")
-var del = document.getElementById("ButtonDelete")
+var post = $("#ButtonPost")
+var clear = $("#ButtonClear")
+var mark = $("#ButtonMark")
+var del = $("#ButtonDelete")
 
-post.addEventListener("click", TodoPost)
-clear.addEventListener("click", TodoClear)
-mark.addEventListener("click", TodoMark)
-del.addEventListener("click", TodoDel)
-
-function TodoPost(e) {
+post.on("click", function(e) {
     e.preventDefault()
     var todo = document.getElementById("todoText").value
 
@@ -26,23 +21,23 @@ function TodoPost(e) {
     list.appendChild(div)
 
     document.getElementById("todoText").value = ""
-}
+})
 
-function TodoClear() {
+clear.on("click", function() {
     var todos = document.getElementsByName("todo")
     for (var i = 0; i < todos.length; i++) {
         todos[i].checked = false
     }
-}
+})
 
-function TodoMark() {
+mark.on("click", function() {
     var todos = document.getElementsByName("todo")
     for (var i = 0; i < todos.length; i++) {
         todos[i].checked = true
     }
-}
+})
 
-function TodoDel() {
+del.on("click", function() {
     var list = document.getElementById("todoList")
     list.innerHTML = ""
-}
+})
